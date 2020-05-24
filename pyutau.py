@@ -408,7 +408,7 @@ class Note:
         if '@cache' in self.note_data:
             return self.note_data['@cache']
             
-def createNote(lyric = 'あ', length = 480, note_num = 60, **kwargs):
+def create_note(lyric = 'あ', length = 480, note_num = 60, **kwargs):
     #Creates a new INSERT note.
     note = Note('INSERT')
     note.set_note_num(note_num)
