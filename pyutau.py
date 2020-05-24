@@ -10,7 +10,7 @@ class Envelope:
     def set_all(self, *args):
         tmp = []
         self.p = []
-        self.t = []
+        self.v = []
         if len(args) > 1 and args[0] != '':
             tmp.extend(args)
 
