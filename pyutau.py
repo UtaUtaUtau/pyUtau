@@ -195,10 +195,10 @@ class Note:
         else:
             return None
 
-    #For setting multiple data. Must only be given string data.
+    #For setting multiple data. Must only be given data with __str__ or __repr__
     def set_multiple_data(self, **kwargs):
         for k, v in kwargs.items():
-            self.note_data[k] = v
+            self.note_data[k] = str(v)
 
     #For converting the Note class back to UTAU formatting
     def __str__(self):
@@ -479,5 +479,6 @@ class UtauPlugin:
 
         return string
 
-    def write(self, f):
-        f.write(str(self))
+    def write(self, fpath):
+        with open(fpath, 'w', encoding = 'shiftjis') as f:
+            f.write(str(self))
