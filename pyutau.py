@@ -139,13 +139,13 @@ class Vibrato:
         self.offset = tmp[6]
 
     def set_all(self, length = None, cycle = None, depth = None, fade_in = None, fade_out = None, phase = None, offset = None):
-        self.length = length if length else self.length
-        self.cycle = cycle if cycle else self.cycle
-        self.depth = depth if depth else self.depth
-        self.fade_in = fade_in if fade_in else self.fade_in
-        self.fade_out = fade_out if fade_out else self.fade_out
-        self.phase = phase if phase else self.fade_out
-        self.offset = offset if offset else self.offset
+        self.length = length if length != None else self.length
+        self.cycle = cycle if cycle != None else self.cycle
+        self.depth = depth if depth != None else self.depth
+        self.fade_in = fade_in if fade_in != None else self.fade_in
+        self.fade_out = fade_out if fade_out != None else self.fade_out
+        self.phase = phase if phase != None else self.phase
+        self.offset = offset if offset != None else self.offset
     
     def __str__(self):
         tmp = [self.length, self.cycle, self.depth, self.fade_in, self.fade_out, self.phase, self.offset]
