@@ -62,7 +62,7 @@ class Mode1Pitch:
         return ','.join([f'{x:.3f}'.rstrip('0').rstrip('.') for x in self.pitches])
 
     def set_start_time(self, PBStart):
-        self.start_time = float(PBStart)
+        self.start_time = None if PBStart == '' else float(PBStart)
 
     def get_start_time(self):
         return f'{self.start_time:.3f}'.rstrip('0').rstrip('.') if self.start_time != None else ''
@@ -383,6 +383,14 @@ class Note:
             self.set_multiple_data(**mode1pitch.get())
         else:
             self.set_multiple_data(**mode1pitch)
+
+        self.note_data['PBType'] = '5'
+
+    def get_mode1pitch(self):
+        if 'PitchBend' in self.note_data:
+            res = Mode1Pitch(PitchBend = self.note_data['PitchBend'])
+            if 'PBStart' in self.note_data:
+                res.set_start_time(self.note_data['PBStart'])
 
     #Getters for read-only data. All of these start with @
     def get_at_preutterance(self):
