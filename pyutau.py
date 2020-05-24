@@ -362,7 +362,9 @@ class Note:
 
     def get_mode2pitch(self):
         if 'PBS' in self.note_data:
-            res = Mode2Pitch(self.note_data['PBS'], self.note_data['PBW'], self.note_data['PBY'])
+            res = Mode2Pitch(self.note_data['PBS'], self.note_data['PBW'])
+            if 'PBY' in self.note_data:
+                res.set_pby(*self.note_data['PBY'].split(','))
             if 'PBM' in self.note_data:
                 res.set_pbm(*self.note_data['PBM'].split(','))
             return res
