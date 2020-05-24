@@ -127,7 +127,7 @@ class Mode2Pitch:
 #Mode2 Vibrato class. This just deals with vibrato.
 class Vibrato:
     def __init__(self, VBR = ''):
-        tmp = [float(x) for x in VBR.split(',')]
+        tmp = [float(x) if x != '' else 0 for x in VBR.split(',')]
         if len(tmp) < 7:
             tmp = [65, 180, 35, 20, 20, 0, 0]
         self.length = tmp[0]
