@@ -394,13 +394,13 @@ class Note:
 
     #Getters for read-only data. All of these start with @
     def get_at_preutterance(self):
-        return self.note_data['@preuttr']
+        return float(self.note_data['@preuttr'])
 
     def get_at_overlap(self):
-        return self.note_data['@overlap']
+        return float(self.note_data['@overlap'])
 
     def get_at_start_point(self):
-        return self.note_data['@stpoint']
+        return float(self.note_data['@stpoint'])
 
     #These do not exist when the note is a rest note
     def get_sample_filename(self):
