@@ -110,7 +110,7 @@ class Mode2Pitch:
         return ','.join([f'{x:.3f}'.rstrip('0').rstrip('.') for x in self.pby])
 
     def set_pbm(self, *args):
-        self.pbw = [str(x) for x in args]
+        self.pbm = [str(x) for x in args]
 
     def get_pbm(self):
         return ','.join(self.pbm)
