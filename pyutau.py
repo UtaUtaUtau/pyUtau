@@ -129,7 +129,7 @@ class Vibrato:
     def __init__(self, VBR = ''):
         tmp = [float(x) for x in VBR.split(',')]
         if len(tmp) < 7:
-            tmp.extend([65, 180, 35, 20, 20, 0, 0])
+            tmp = [65, 180, 35, 20, 20, 0, 0]
         self.length = tmp[0]
         self.cycle = tmp[1]
         self.depth = tmp[2]
