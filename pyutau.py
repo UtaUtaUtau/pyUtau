@@ -383,6 +383,30 @@ class Note:
             self.set_multiple_data(**mode1pitch.get())
         else:
             self.set_multiple_data(**mode1pitch)
+
+    #Getters for read-only data. All of these start with @
+    def get_at_preutterance(self):
+        return self.note_data['@preuttr']
+
+    def get_at_overlap(self):
+        return self.note_data['@overlap']
+
+    def get_at_start_point(self):
+        return self.note_data['@stpoint']
+
+    #These do not exist when the note is a rest note
+    def get_sample_filename(self):
+        if '@filename' in self.note_data:
+            return self.note_data['@filename']
+
+    def get_alias(self):
+        if '@alias' in self.note_data:
+            return self.note_data['@alias']
+
+    #This also doesn't exists when there is no cache for the note
+    def get_cache_location(self):
+        if '@cache' in self.note_data:
+            return self.note_data['@cache']
             
 def createNote(lyric = 'あ', length = 480, note_num = 60, **kwargs):
     #Creates a new INSERT note.
