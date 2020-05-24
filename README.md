@@ -17,10 +17,9 @@ import sys
 
 plugin = pyutau.UtauPlugin(sys.argv[-1])
 
-# Whatever you do
+# Whatever you wanna do
 
-with open(sys.argv[1], 'w', encoding = 'shiftjis') as f:
-  plugin.write(f)
+plugin.write(sys.argv[-1])
 ```
 
 UtauPlugin
