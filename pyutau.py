@@ -2,7 +2,7 @@ import re
 
 #Envelope class. Largely based on how Delta stores Envelope data.
 class Envelope:
-    def __init__(self, envelope):
+    def __init__(self, envelope = ''):
         self.p = []
         self.v = []
         self.set_all(*envelope.split(','))
@@ -126,7 +126,7 @@ class Mode2Pitch:
         
 #Mode2 Vibrato class. This just deals with vibrato.
 class Vibrato:
-    def __init__(self, VBR):
+    def __init__(self, VBR = ''):
         tmp = [float(x) for x in VBR.split(',')]
         if len(tmp) < 7:
             tmp.extend([65, 180, 35, 20, 20, 0, 0])
@@ -157,7 +157,7 @@ class Vibrato:
 
 #Note class. Biggest class of all. Stores note data with corresponding classes for "special" data.
 class Note:
-    def __init__(self, note_type):
+    def __init__(self, note_type = 'INSERT'):
         #I have no idea on how I'd deal with this. The easiest way is to just let it be a string...
         self.note_type = note_type
         #In case it's needed to bring back a delete note... I don't even know if anyone needs it at all.
@@ -418,7 +418,7 @@ class Note:
             
 def create_note(lyric = 'あ', length = 480, note_num = 60, **kwargs):
     #Creates a new INSERT note.
-    note = Note('INSERT')
+    note = Note()
     note.set_note_num(note_num)
     note.set_lyric(lyric)
     note.set_length(length)
