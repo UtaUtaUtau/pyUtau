@@ -5,9 +5,9 @@ class Envelope:
     def __init__(self, envelope):
         self.p = []
         self.v = []
-        self.set(*envelope.split(','))
+        self.set_all(*envelope.split(','))
     
-    def set(self, *args):
+    def set_all(self, *args):
         tmp = []
         self.p = []
         self.t = []
