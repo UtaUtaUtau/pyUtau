@@ -372,11 +372,11 @@ class Note:
             return None
 
     def set_vibrato(self, vibrato):
-        self.note_data['Vibrato'] = str(vibrato)
+        self.note_data['VBR'] = str(vibrato)
 
     def get_vibrato(self):
-        if 'Vibrato' in self.note_data:
-            return Vibrato(self.note_data['Vibrato'])
+        if 'VBR' in self.note_data:
+            return Vibrato(self.note_data['VBR'])
         else:
             return None
 
