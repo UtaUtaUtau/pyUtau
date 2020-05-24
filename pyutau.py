@@ -393,6 +393,10 @@ class Note:
             res = Mode1Pitch(PitchBend = self.note_data['PitchBend'])
             if 'PBStart' in self.note_data:
                 res.set_start_time(self.note_data['PBStart'])
+            
+            return res
+        else:
+            return None
 
     #Getters for read-only data. All of these start with @
     def get_at_preutterance(self):
