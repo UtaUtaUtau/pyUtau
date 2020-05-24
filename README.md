@@ -103,7 +103,7 @@ A class that stores note data.
 
 ### Methods:
 <dl>
-  <dt>__str__(self></dt>
+  <dt>__str__(self)</dt>
   <dt>get(self)</dt>
   <dd>Returns a string representation of the note in the format of the UST</dd>
   
@@ -173,7 +173,7 @@ A class for storing envelope data. Largely based on how delta's library stores e
   <dt>p</dt>
   <dd>List of floats that store p1, p2, p3, p4, and p5. These are in milliseconds.</dd>
   
-  <ddtv</dt>
+  <dd>v</dt>
   <dd>List of floats that store v1, v2, v3, v4, and v5. These are in percentages.</dd>
 </dl>
 
