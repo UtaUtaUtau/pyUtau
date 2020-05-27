@@ -163,9 +163,9 @@ Envelope
 A class for storing envelope data. Largely based on how delta's library stores envelopes.
 
 <dl>
-  <dd>Envelope(envelope = '')</dd>
-  <dt>Makes an envelope from the string representation of it. Default envelope is 0, 5, 35, 0, 100, 100, 0
-  Read more about envelopes in the @wiki.</dt>
+  <dt>Envelope(envelope = '')</dt>
+  <dd>Makes an envelope from the string representation of it. Default envelope is 0, 5, 35, 0, 100, 100, 0
+  Read more about envelopes in the @wiki.</dd>
 </dl> 
 
 ---
@@ -175,7 +175,7 @@ A class for storing envelope data. Largely based on how delta's library stores e
   <dt>p</dt>
   <dd>List of floats that store p1, p2, p3, p4, and p5. These are in milliseconds.</dd>
   
-  <dd>v</dt>
+  <dt>v</dt>
   <dd>List of floats that store v1, v2, v3, v4, and v5. These are in percentages.</dd>
 </dl>
 
