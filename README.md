@@ -36,10 +36,11 @@ UtauPlugin is the main class.
 ### Data descriptors:
 <dl>
   <dt>version</dt>
-  <dd>Obsolete. Returns UST version.</dd>
+  <dd>Obsolete. Returns UST version. Will be None if not provided.</dd>
   
   <dt>settings</dt>
-  <dd>Dictionary of UST settings. These are read-only. Read more about it in the @wiki page.</dd>
+  <dd>Dictionary of UST settings. These are read-only. Will be empty when not provided.
+  Read more about it in the @wiki page.</dd>
   
   <dt>prev_note</dt>
   <dd>Stores the note that precedes the selected notes in the UST. None if there is no PREV note.</dd>
@@ -56,10 +57,10 @@ UtauPlugin is the main class.
 ### Methods:
 <dl>
   <dt>__str__(self)</dt>
-  <dd>Returns a string representation of the whole UST</dd>
+  <dd>Returns a string representation of the whole UST.</dd>
   
-  <dt>write(fpath)</dt>
-  <dd>Writes the UST data to the given file path</dd>
+  <dt>write(fpath, withHeader = False)</dt>
+  <dd>Writes the UST data to the given file path. Normally doesn't save header info.</dd>
   
   <dt>insert_note(self, idx, note)</dt>
   <dd>Inserts note at the given index. Notes are stored in a list.</dd>
@@ -78,10 +79,11 @@ A class that stores note data.
 <dl>
   <dt>Note(self, note_type = 'INSERT')</dt>
   <dd>Makes a default note with the given note type. Note types are PREV, NEXT, INSERT, DELETE and ####.
-  The default note is at C4 with lyric あ, intensity 100, modulation 0, and length 480</dd>
+  The default note is at C4 with lyric あ, and length 480</dd>
   
   <dt>create_note(lyric = 'あ', length = 480, note_num = 60, **kwargs)</dt>
   <dd>Makes a new INSERT note. Made for inserting notes specifically. note_num is the key, C4 = 60.
+  If the note is not a rest note (lyric "R", "r" or blank), it automatically sets intensity to 100 and mod to 0.
   **kwargs are for extra data. Read the @wiki mentioned above for more info.</dd>
 </dl>
 
@@ -96,7 +98,7 @@ A class that stores note data.
   <dd>The reason why note_type doesn't change to DELETE with delete_note(). This is made in case someone wants to bring back a deleted note from their data</dd>
   
   <dt>note_data</dt>
-  <dd>Where all note data is stored in a dictionary. Blank entries are written as None. Only put string keys and values here.
+  <dd>Where all note data is stored in a dictionary. Blank entries are written as None. Only put string keys and values here.</dd>
 </dl>
 
 ---
@@ -281,7 +283,7 @@ A class for Mode2 pitchbend data.
   <dd>Gets the string representation of the corresponding data.</dd>
   
   <dt>get(self)</dt>
-  <dd>Returns a dictionary with keys PBS, PBW, PBY, and PBM with its values as their corresponding data in their string representations.</dd?
+  <dd>Returns a dictionary with keys PBS, PBW, PBY, and PBM with its values as their corresponding data in their string representations.</dd>
 </dl>
 
 Vibrato

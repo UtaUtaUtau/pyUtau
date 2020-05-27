@@ -168,9 +168,7 @@ class Note:
             'Length' : '480',
             'Lyric' : 'あ',
             'NoteNum' : '60',
-            'PreUtterance' : None,
-            'Intensity' : '100',
-            'Modulation' : '0'
+            'PreUtterance' : None
         }
 
     def delete_note(self):
@@ -204,12 +202,11 @@ class Note:
     def __str__(self):
         string = f'[#{self.note_type}]\n' if not self.isdeleted else '[#DELETE]\n'
         for k, v in self.note_data.items():
-            if not k.startswith('@'):
-                string += f'{k}='
-                if v:
-                    string += f'{v}\n'
-                else:
-                    string += '\n'
+            string += f'{k}='
+            if v:
+                string += f'{v}\n'
+            else:
+                string += '\n'
 
         return string
 
@@ -428,6 +425,10 @@ def create_note(lyric = 'あ', length = 480, note_num = 60, **kwargs):
     note.set_note_num(note_num)
     note.set_lyric(lyric)
     note.set_length(length)
+    #Sets intensity and modulation data to 100 and 0 if new note is not a rest note
+    if not lyric or lyric.lower() != 'r':
+        note.set_intensity(100)
+        note.set_modulation(0)
     note.set_multiple_data(**kwargs)
     
 #UtauPlugin class. Has data for everything UTAU sends in.
@@ -439,14 +440,20 @@ class UtauPlugin:
         self.settings = {}
         self.prev_note = None
         self.next_note = None
+        self.version = None
         self.notes = []
-        sectionName = ''
-        #I'm sorry if you're disgusted by this parsing.
+        #I'm sorry if you're disgusted by this parsing. Even if rewritten, my statement still holds.
         for line in data_string:
             sectionMatch = re.match('\[#(.+)\]', line)
             if sectionMatch:
-                phase += 1
                 sectionName = sectionMatch.group(1)
+                if sectionName == 'VERSION':
+                    phase = 1
+                elif sectionName == 'SETTING':
+                    phase = 2
+                else:
+                    phase = 3
+                    self.notes.append(Note(sectionName))
                 continue
             
             if phase == 1:
@@ -454,9 +461,7 @@ class UtauPlugin:
             elif phase == 2:
                 setStr = line.split('=')
                 self.settings[setStr[0]] = setStr[1][:-1]
-            else:
-                if phase - 3 == len(self.notes):
-                    self.notes.append(Note(sectionName))   
+            else:   
                 setStr = line.split('=')
                 self.notes[-1].set_custom_data(setStr[0], setStr[1][:-1])
 
@@ -493,6 +498,13 @@ class UtauPlugin:
 
         return string
 
-    def write(self, fpath):
+    def write(self, fpath, withHeader = False):
         with open(fpath, 'w', encoding = 'shiftjis') as f:
+            if withHeader:
+                f.write('[#VERSION]\n')
+                f.write(self.version + '\n')
+                f.write('[#SETTING]\n')
+                for k, v in self.settings.items():
+                    f.write(f'{k}={v}\n')
+
             f.write(str(self))
