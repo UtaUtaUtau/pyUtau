@@ -430,6 +430,8 @@ def create_note(lyric = 'あ', length = 480, note_num = 60, **kwargs):
         note.set_intensity(100)
         note.set_modulation(0)
     note.set_multiple_data(**kwargs)
+
+    return note
     
 #UtauPlugin class. Has data for everything UTAU sends in.
 class UtauPlugin:

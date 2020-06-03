@@ -81,7 +81,7 @@ A class that stores note data.
   <dd>Makes a default note with the given note type. Note types are PREV, NEXT, INSERT, DELETE and ####.
   The default note is at C4 with lyric あ, and length 480</dd>
   
-  <dt>create_note(lyric = 'あ', length = 480, note_num = 60, **kwargs)</dt>
+  <dt>pyutau.create_note(lyric = 'あ', length = 480, note_num = 60, **kwargs)</dt>
   <dd>Makes a new INSERT note. Made for inserting notes specifically. note_num is the key, C4 = 60.
   If the note is not a rest note (lyric "R", "r" or blank), it automatically sets intensity to 100 and mod to 0.
   **kwargs are for extra data. Read the @wiki mentioned above for more info.</dd>
