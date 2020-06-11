@@ -128,7 +128,7 @@ A class that stores note data.
   <dd>Returns a deep copy of the note.</dd>
 
   <dt>clear_note(self)</dt>
-  <dd>Clears all note data except the essentials (lyric, length, note number/pitch, pre-utterance)</dd>
+  <dd>Clears all note data except the essentials (lyric, length, note number/pitch, pre-utterance) and some preferences (intensity and modulation).</dd>
 </dl>
 
 ***Setters and Getters***
