@@ -186,8 +186,16 @@ class Note:
     def copy(self):
         res = Note(self.note_type)
         res.isdeleted = self.isdeleted
-        res.set_multiple_data(self.note_data)
+        res.set_multiple_data(**self.note_data)
         return res
+
+    #Clears all properties except essential ones
+    def clear_note(self):
+        new_data = {}
+        for k, v in self.note_data.items():
+            if k in ['Length', 'Lyric', 'NoteNum', 'PreUtterance', 'Intensity', 'Modulation']:
+                new_data[k] = v
+        self.note_data = new_data
 
     def delete_note(self):
         #Sets Note type to DELETE. This deletes the note... I hope I don't need to change note order for this.
