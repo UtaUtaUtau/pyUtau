@@ -123,6 +123,9 @@ A class that stores note data.
   
   <dt>set_multiple_data(self, **kwargs)</dt>
   <dd>Sets multiple data because note_data is a dictionary. Just.. yeah.</dd>
+
+  <dt>copy(self)</dt>
+  <dd>Returns a deep copy of the note.</dd>
 </dl>
 
 ***Setters and Getters***
@@ -189,6 +192,9 @@ A class for storing envelope data. Largely based on how delta's library stores e
   
   <dt>set_all(self, *args)</dt>
   <dd>Sets all of the parameters of the envelope to the arguments. Order of arguments is p1, p2, p3, v1, v2, v3, v4, (A '%' can be here, copes with UTAU's weirdness), p4, p5, v5.</dd>
+
+  <dt>copy(self)</dt>
+  <dd>Returns a deep copy of the envelope.</dd>
 </dl>
 
 Mode1Pitch
@@ -233,6 +239,9 @@ A class for storing Mode1 pitchbend data. I gave my least efforts on this.
   
   <dt>get(self)</dt>
   <dd>Returns a dictionary with keys PBStart and PitchBend and values of the string representations.</dd>
+
+  <dt>copy(self)</dt>
+  <dd>Returns a deep copy of the Mode1 pitchbend data.</dd>
 </dl>
 
 Mode2Pitch
@@ -284,6 +293,9 @@ A class for Mode2 pitchbend data.
   
   <dt>get(self)</dt>
   <dd>Returns a dictionary with keys PBS, PBW, PBY, and PBM with its values as their corresponding data in their string representations.</dd>
+
+  <dt>copy(self)</dt>
+  <dd>Returns a deep copy of the Mode2 pitchbend data.</dd>
 </dl>
 
 Vibrato
@@ -323,6 +335,9 @@ A class for storing Mode2 vibrato data.
   <dt>__str__(self)</dt>
   <dt>get(self)</dt>
   <dd>Returns the string representation of vibrato.</dd>
+
+  <dt>copy(self)</dt>
+  <dd>Returns a deep copy of the vibrato.</dd>
 </dl>
 
 ---

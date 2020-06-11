@@ -49,6 +49,9 @@ class Envelope:
     def get(self):
         return str(self)
 
+    def copy(self):
+        return Envelope(self.get())
+
 #Mode1 Pitch Class. Honestly, I don't really like Mode1. I feel like someone's gonna need this tho so.
 class Mode1Pitch:
     def __init__(self, PBStart = '', PitchBend = ''):
@@ -72,6 +75,9 @@ class Mode1Pitch:
         res['PitchBend'] = self.get_pitches()
         res['PBStart'] = self.get_start_time()
         return res
+
+    def copy(self):
+        return Mode1Pitch(self.get_start_time(), self.get_pitches())
 
 #Mode2 Pitch class. Returns a dictionary of string values for get
 class Mode2Pitch:
@@ -123,7 +129,10 @@ class Mode2Pitch:
         res['PBM'] = self.get_pbm()
 
         return res
-        
+
+    def copy(self):
+        return Mode2Pitch(self.get_pbs(), self.get_pbw(), self.get_pby(), self.get_pbm())    
+    
 #Mode2 Vibrato class. This just deals with vibrato.
 class Vibrato:
     def __init__(self, VBR = ''):
@@ -153,6 +162,9 @@ class Vibrato:
 
     def get(self):
         return str(self)
+
+    def copy(self):
+        return Vibrato(self.get())
     
 
 #Note class. Biggest class of all. Stores note data with corresponding classes for "special" data.
@@ -170,6 +182,12 @@ class Note:
             'NoteNum' : '60',
             'PreUtterance' : None
         }
+    
+    def copy(self):
+        res = Note(self.note_type)
+        res.isdeleted = self.isdeleted
+        res.set_multiple_data(self.note_data)
+        return res
 
     def delete_note(self):
         #Sets Note type to DELETE. This deletes the note... I hope I don't need to change note order for this.
