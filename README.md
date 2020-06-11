@@ -128,7 +128,8 @@ A class that stores note data.
   <dd>Returns a deep copy of the note.</dd>
 
   <dt>clear_note(self)</dt>
-  <dd>Clears all note data except the essentials (lyric, length, note number/pitch, pre-utterance) and some preferences (intensity and modulation).</dd>
+  <dd>Returns a clean slate note copy of the note with INSERT as its note type. Clean slate means it only has the required parameters plus intensity, modulation, and tempo. I think those are default essential.
+  This is good for cleaning extra properties by removing the existing note and inserting the clean note, as UTAU never considers a property cleared when it's not returned.</dd>
 </dl>
 
 ***Setters and Getters***

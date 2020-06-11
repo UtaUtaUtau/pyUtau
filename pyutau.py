@@ -193,9 +193,11 @@ class Note:
     def clear_note(self):
         new_data = {}
         for k, v in self.note_data.items():
-            if k in ['Length', 'Lyric', 'NoteNum', 'PreUtterance', 'Intensity', 'Modulation']:
+            if k in ['Length', 'Lyric', 'NoteNum', 'PreUtterance', 'Intensity', 'Modulation', 'Tempo']:
                 new_data[k] = v
-        self.note_data = new_data
+        res = Note()
+        res.set_multiple_data(**new_data)
+        return res
 
     def delete_note(self):
         #Sets Note type to DELETE. This deletes the note... I hope I don't need to change note order for this.
