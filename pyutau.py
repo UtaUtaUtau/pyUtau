@@ -495,11 +495,12 @@ class UtauPlugin:
                 setStr = line.split('=')
                 self.notes[-1].set_custom_data(setStr[0], setStr[1][:-1])
 
-        if self.notes[0].get_note_type() == 'PREV':
-            self.prev_note = self.notes.pop(0)
+        if self.notes:
+            if self.notes[0].get_note_type() == 'PREV':
+                self.prev_note = self.notes.pop(0)
 
-        if self.notes[-1].get_note_type() == 'NEXT':
-            self.next_note = self.notes.pop()
+            if self.notes[-1].get_note_type() == 'NEXT':
+                self.next_note = self.notes.pop()
     
     def insert_note(self, idx, note):
         self.notes.insert(idx, note)
