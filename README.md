@@ -137,32 +137,33 @@ A class that stores note data.
 These are written for data that UTAU can send in and read.
 Some of them get initializers because UTAU sends in values for them.
 **NOTE:** All floating point data are rounded to 3 decimals when set. Sorry if you still wanted to keep precision.
+**NOTE pt. 2:** If a property has both a setter and a getter, it's got a Python property setup for it. For example, since Lyric has both a setter and a getter, its property is named `lyric`. The `set_lyric` and `get_lyric` functions still exist for backwards compatibility, I hope. The table will list the property names, even if it doesn't have a setter. The format is just `set_x`, `get_x`, and `init_x` where `x` is the property name.
 
 Legend: **Required**, Not Required, *Read-only*
-Data Key | Description | Setter | Getter | Initializer | Value Type
---- | --- | :---: | :---: | :---: | :---: 
-**Length** | Note Length.  480 = 1 quarter note. | `set_length(self, length)` | `get_length(self)` | - | `int` 
-**Lyric** | Note Lyric. | `set_lyric(self, lyric)` | `get_lyric(self)` | `init_lyric(self)` | `str` 
-**NoteNum** | Note key. C4 = 60 | `set_note_num(self, note_num)`| `get_note_num(self)` | - | `int` 
-**PreUtterance** | Note pre-utterance in milliseconds. | `set_preutterance(self, preutterance)` | `get_preutterance(self)` | `init_preutterance(self)` | `float`
-VoiceOverlap | Note overlap in milliseconds. | `set_overlap(self, overlap)` | `get_overlap(self)` | `init_overlap(self)` | `float`
-Intensity | Note intensity in percent. | `set_intensity(self, intensity)` | `get_intensity(self)` | - | `float` 
-Modulation | Note modulation in percent. | `set_modulation(self, modulation)` | `get_modulation(self)` | - | `float`
-StartPoint | Note start point/time in milliseconds. | `set_start_point(self, start_point)` | `get_start_point(self)` | `init_start_point(self)` | `float` 
-Envelope | Note envelope. | `set_envelope(self, envelope)` | `get_envelope(self)` | - | `Envelope`
-Tempo | Tempo at note in BPM. | `set_tempo(self, tempo)` | `get_tempo(self)` | - | `float`
-Velocity | Note consonant velocity in percent. | `set_velocity(self, velocity)` | `get_velocity(self)` | - | `float`
-Label | Label at note. | `set_label(self, label)` | `get_label(self, label)` | - | `str`
-$direct | Boolean that enables direct rendering. | `set_direct(self, direct)` | `get_direct(self)` | - | `bool`
-PBS, PBW, PBY, PBM | Mode 2 pitchbend data. | `set_mode2pitch(self, mode2pitch)` | `get_mode2pitch(self)` | - | `Mode2Pitch`
-VBR | Mode 2 vibrato data. | `set_vibrato(self, vibrato)` | `get_vibrato(self)` | - | `Vibrato`
-PitchBend, PBStart | Mode 1 pitchbend data. | `set_mode1pitch(self, mode1pitch)` | `get_mode1pitch(self)` | - | `Mode1Pitch`
-*@preuttr* | Re-calculated pre-utterance in milliseconds. | - | `get_at_preutterance(self)` | - | `float`
-*@overlap* | Re-calculated overlap in milliseconds. | - | `get_at_overlap(self)` | - | `float`
-*@stpoint* | Calculated start point in milliseconds. | - | `get_at_start_point(self)` | - | `float`
-*@filename* | Filename of sample. | - | `get_sample_filename(self)` | - | `str`
-*@alias* | Alias with prefix map applied. Can also have VCV applied for shareware. | - | `get_alias(self)` | - | `str`
-*@cache* | Note cache file path. Not present when the note has no cache. | - | `get_cache_location(self)` | - | `str`
+Data Key | Property Name | Description | Getter | Setter | Initializer | Value Type
+--- | --- | --- | :---: | :---: | :---: | :---: 
+**Length** | `length` | Note Length.  480 = 1 quarter note. | ✓ | ✓ | - | `int` 
+**Lyric** | `lyric` | Note Lyric. | ✓ | ✓ | ✓ | `str` 
+**NoteNum** | `note_num` | Note key. C4 = 60 | ✓ | ✓ | - | `int` 
+**PreUtterance** | `preutterance` | Note pre-utterance in milliseconds. | ✓ | ✓ | ✓ | `float`
+VoiceOverlap | `overlap` | Note overlap in milliseconds. | ✓ | ✓ | ✓ | `float`
+Intensity | `intensity` | Note intensity in percent. | ✓ | ✓ | - | `float` 
+Modulation | `modulation` | Note modulation in percent. | ✓ | ✓ | - | `float`
+StartPoint | `start_point` | Note start point/time in milliseconds. | ✓ | ✓ | ✓ | `float` 
+Envelope | `envelope` | Note envelope. | ✓ | ✓ | - | `Envelope`
+Tempo | `tempo` | Tempo at note in BPM. | ✓ | ✓ | - | `float`
+Velocity | `velocity` | Note consonant velocity in percent. | ✓ | ✓ | - | `float`
+Label | `label` | Label at note. | ✓ | ✓ | - | `str`
+$direct | `direct` | Boolean that enables direct rendering. | ✓ | ✓ | - | `bool`
+PBS, PBW, PBY, PBM | `mode2pitch` | Mode 2 pitchbend data. | ✓ | ✓ | - | `Mode2Pitch`
+VBR | `vibrato` | Mode 2 vibrato data. | ✓ | ✓ | - | `Vibrato`
+PitchBend, PBStart | `mode1pitch` | Mode 1 pitchbend data. | ✓ | ✓ | - | `Mode1Pitch`
+*@preuttr* | `at_preutterance` | Re-calculated pre-utterance in milliseconds. | ✓ | - | - | `float`
+*@overlap* | `at_overlap` | Re-calculated overlap in milliseconds. | ✓ | - | - | `float`
+*@stpoint* | `at_start_point` | Calculated start point in milliseconds. | ✓ | - | - | `float`
+*@filename* | `sample_filename` | Filename of sample. | ✓ | - | - | `str`
+*@alias* | `alias` | Alias with prefix map applied. Can also have VCV applied for shareware. | ✓ | - | - | `str`
+*@cache* | `cache_location` | Note cache file path. Not present when the note has no cache. | ✓ | - | - | `str`
 
 Envelope
 -----

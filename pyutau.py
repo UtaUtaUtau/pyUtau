@@ -249,11 +249,15 @@ class Note:
     def get_length(self):
         return int(self.note_data['Length'])
 
+    length = property(get_length, set_length)
+
     def set_lyric(self, lyric):
         self.note_data['Lyric'] = lyric
 
     def get_lyric(self):
         return self.note_data['Lyric']
+
+    lyric = property(get_lyric, set_lyric)
 
     def init_lyric(self):
         #This sets the lyric to what it is with the prefix map applied.
@@ -267,6 +271,8 @@ class Note:
     def get_note_num(self):
         return int(self.note_data['NoteNum'])
 
+    note_num = property(get_note_num, set_note_num)
+
     def set_preutterance(self, preutterance):
         #Some might prefer using decimals.
         #This isn't as elegant as {preutterance:.3g} but it switches to e when needed
@@ -277,9 +283,11 @@ class Note:
         #The PreUtterance value can be blank, but is required.
         #The way I store this blank is by making it None.
         if self.note_data['PreUtterance']:
-            return int(self.note_data['PreUtterance'])
+            return float(self.note_data['PreUtterance'])
         else:
             return None
+
+    preutterance = property(get_preutterance, set_preutterance)
 
     def init_preutterance(self):
         #UTAU sends in preutterance values, this initializes it on the PreUtterance data
@@ -292,11 +300,13 @@ class Note:
         self.note_data['VoiceOverlap'] = f'{overlap:.3f}'.rstrip('0').rstrip('.')
 
     def get_overlap(self):
-        #TODO: Get overlap from @overlap or just check VoiceOverlap?
+        #Get overlap from @overlap or just check VoiceOverlap?
         if 'VoiceOverlap' in self.note_data:
-            return self.note_data['VoiceOverlap']
+            return float(self.note_data['VoiceOverlap'])
         else:
             return None
+
+    overlap = property(get_overlap, set_overlap)
 
     def init_overlap(self):
         #Same for init_preutterance
@@ -311,6 +321,8 @@ class Note:
         else:
             return None
 
+    intensity = property(get_intensity, set_intensity)
+
     def set_modulation(self, modulation):
         self.note_data['Modulation'] = f'{modulation:.3f}'.rstrip('0').rstrip('.')
 
@@ -320,15 +332,19 @@ class Note:
         else:
             return None
 
+    modulation = property(get_modulation, set_modulation)
+
     def set_start_point(self, start_point):
         self.note_data['StartPoint'] = f'{start_point:.3f}'.rstrip('0').rstrip('.')
 
     def get_start_point(self, start_point):
-        #TODO: Same as get_overlap
+        #Same as get_overlap
         if 'StartPoint' in self.note_data:
             return float(self.note_data['StartPoint'])
         else:
             return None
+
+    start_point = property(get_start_point, set_start_point)
 
     def init_start_point(self):
         self.note_data['StartPoint'] = self.note_data['@stpoint']
@@ -343,6 +359,8 @@ class Note:
         else:
             return None
 
+    envelope = property(get_envelope, set_envelope)
+
     def set_tempo(self, tempo):
         self.note_data['Tempo'] = f'{tempo:.3f}'.rstrip('0').rstrip('.')
 
@@ -351,6 +369,8 @@ class Note:
             return float(self.note_data['Tempo'])
         else:
             return None
+
+    tempo = property(get_tempo, set_tempo)
 
     def set_velocity(self, velocity):
         self.note_data['Velocity'] = f'{velocity:.3f}'.rstrip('0').rstrip('.')
@@ -361,14 +381,18 @@ class Note:
         else:
             return None
 
+    velocity = property(get_velocity, set_velocity)
+
     def set_label(self, label):
         self.note_data['Label'] = label
 
     def get_label(self):
         if 'Label' in self.note_data:
-            return float(self.note_data['Velocity'])
+            return self.note_data['Label']
         else:
             return None
+
+    label = property(get_label, set_label)
 
     def set_direct(self, direct):
         self.note_data['$direct'] = str(direct).lower()
@@ -378,6 +402,8 @@ class Note:
             return self.note_data['$direct'] == 'true'
         else:
             return None
+
+    direct = property(get_direct, set_direct)
 
     def set_mode2pitch(self, mode2pitch):
         if isinstance(mode2pitch, Mode2Pitch):
@@ -396,6 +422,8 @@ class Note:
         else:
             return None
 
+    mode2pitch = property(get_mode2pitch, set_mode2pitch)
+
     def set_vibrato(self, vibrato):
         self.note_data['VBR'] = str(vibrato)
 
@@ -404,6 +432,8 @@ class Note:
             return Vibrato(self.note_data['VBR'])
         else:
             return None
+
+    vibrato = property(get_vibrato, set_vibrato)
 
     def set_mode1pitch(self, mode1pitch):
         if isinstance(mode1pitch, Mode1Pitch):
@@ -422,6 +452,8 @@ class Note:
             return res
         else:
             return None
+
+    mode1pitch = property(get_mode1pitch, set_mode1pitch)
 
     #Getters for read-only data. All of these start with @
     def get_at_preutterance(self):
