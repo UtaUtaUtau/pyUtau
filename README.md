@@ -136,7 +136,9 @@ A class that stores note data.
 
 These are written for data that UTAU can send in and read.
 Some of them get initializers because UTAU sends in values for them.
+
 **NOTE:** All floating point data are rounded to 3 decimals when set. Sorry if you still wanted to keep precision.
+
 **NOTE pt. 2:** If a property has both a setter and a getter, it's got a Python property setup for it. For example, since Lyric has both a setter and a getter, its property is named `lyric`. The `set_lyric` and `get_lyric` functions still exist for backwards compatibility, I hope. The table will list the property names, even if it doesn't have a setter. The format is just `set_x`, `get_x`, and `init_x` where `x` is the property name.
 
 Legend: **Required**, Not Required, *Read-only*
