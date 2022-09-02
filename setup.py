@@ -23,5 +23,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9']
+        'Programming Language :: Python :: 3.9'],
+    download_url='https://github.com/UtaUtaUtau/pyUtau/archive/refs/tags/v1.0.0.tar.gz'
     )

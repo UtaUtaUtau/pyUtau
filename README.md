@@ -7,7 +7,7 @@ A complete *bodge* of a Python library made by UtaUtaUtau. Interprets data that 
 
 To use, you can now install this as a Python package through pip by using:
 ```cmd
-pip install git+https://github.com/UtaUtaUtau/pyUtau
+pip install pyutau
 ```
 You can still get the `pyutau.py` file from the folders but I recommend doing this instead.
 
