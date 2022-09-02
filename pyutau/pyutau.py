@@ -1,5 +1,14 @@
 import re
 
+__all__ = [
+    'Envelope',
+    'Mode1Pitch',
+    'Mode2Pitch',
+    'Vibrato',
+    'Note',
+    'UtauPlugin'
+    ]
+
 #Envelope class. Largely based on how Delta stores Envelope data.
 class Envelope:
     def __init__(self, envelope = ''):
