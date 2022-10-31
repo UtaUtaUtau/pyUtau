@@ -163,6 +163,7 @@ Tempo | `tempo` | Tempo at note in BPM. | ✓ | ✓ | - | `float`
 Velocity | `velocity` | Note consonant velocity in percent. | ✓ | ✓ | - | `float`
 Label | `label` | Label at note. | ✓ | ✓ | - | `str`
 $direct | `direct` | Boolean that enables direct rendering. | ✓ | ✓ | - | `bool`
+Flags | `flags` | Note flags. | ✓ | ✓ | - | `str`
 PBS, PBW, PBY, PBM | `mode2pitch` | Mode 2 pitchbend data. | ✓ | ✓ | - | `Mode2Pitch`
 VBR | `vibrato` | Mode 2 vibrato data. | ✓ | ✓ | - | `Vibrato`
 PitchBend, PBStart | `mode1pitch` | Mode 1 pitchbend data. | ✓ | ✓ | - | `Mode1Pitch`

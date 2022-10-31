@@ -414,6 +414,17 @@ class Note:
 
     direct = property(get_direct, set_direct)
 
+    def set_flags(self, flags):
+        self.note_data['Flags'] = str(flags)
+
+    def get_flags(self):
+        if 'Flags' in self.note_data:
+            return self.note_data['Flags']
+        else:
+            return None
+
+    flags = property(get_flags, set_flags)
+
     def set_mode2pitch(self, mode2pitch):
         if isinstance(mode2pitch, Mode2Pitch):
             self.set_multiple_data(**mode2pitch.get())
