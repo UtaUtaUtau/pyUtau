@@ -6,7 +6,7 @@ with open('README.md', encoding='utf8') as f:
 setup(
     name='pyutau',
     packages=['pyutau'],
-    version='1.2.0',
+    version='1.2.1',
     license='MIT',
     description='A python library/module for parsing UTAU plugin data',
     long_description=long_description,
@@ -22,5 +22,5 @@ setup(
         'Operating System :: Microsoft :: Windows',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.10'],
-    download_url='https://github.com/UtaUtaUtau/pyUtau/archive/refs/tags/v1.2.0.tar.gz'
+    download_url='https://github.com/UtaUtaUtau/pyUtau/archive/refs/tags/v1.2.1.tar.gz'
     )
